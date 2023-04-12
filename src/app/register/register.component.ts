@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Match } from '../validators/match';
 
 @Component({
   selector: 'app-register',
@@ -23,9 +24,11 @@ export class RegisterComponent implements OnInit {
       Validators.minLength(5),
       Validators.maxLength(20)
     ])
+  }, {
+    validators: [this.match.validate]
   })
 
-  constructor() { }
+  constructor(private match: Match) { }
 
   ngOnInit(): void {
   }

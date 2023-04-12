@@ -17,4 +17,5 @@
     <button class="btn btn-primary" type="submit">Register</button>
 </form>
 
-{{ registerForm.value | json }}
+<div>{{ registerForm.value | json }}</div>
+<div>{{ registerForm.errors | json }}</div>
