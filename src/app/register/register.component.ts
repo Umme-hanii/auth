@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Match } from '../validators/match';
+import { CompromisedPassword } from '../validators/compromised-password';
 
 @Component({
   selector: 'app-register',
@@ -18,7 +19,7 @@ export class RegisterComponent implements OnInit {
       Validators.required,
       Validators.minLength(5),
       Validators.maxLength(20)
-    ]),
+    ], [this.compromisedPassword.validate]),
     confirmPwd: new FormControl('', [
       Validators.required,
       Validators.minLength(5),
@@ -28,7 +29,10 @@ export class RegisterComponent implements OnInit {
     validators: [this.match.validate]
   })
 
-  constructor(private match: Match) { }
+  constructor(
+    private match: Match,
+    private compromisedPassword: CompromisedPassword
+  ) { }
 
   ngOnInit(): void {
   }
