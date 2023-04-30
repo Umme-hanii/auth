@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Match } from '../validators/match';
 import { CompromisedPassword } from '../validators/compromised-password';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-register',
@@ -31,17 +32,24 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private match: Match,
-    private compromisedPassword: CompromisedPassword
+    private compromisedPassword: CompromisedPassword,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
   }
 
-  register() {
+  async register() {
     if(this.registerForm.invalid) {
       return
     }
 
-    console.log('Submitted!')
+    const { email, password } = this.registerForm.value
+    try {
+      const result = await this.authService.signUp(email, password)
+      console.log(result)
+    } catch(e) {
+      console.log(e)
+    }
   }
 }
