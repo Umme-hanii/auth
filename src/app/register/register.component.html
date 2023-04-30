@@ -2,7 +2,7 @@
     Passwords do not match
 </div>
 
-<form [formGroup]="registerForm">
+<form [formGroup]="registerForm" (ngSubmit)="register()">
     <div class="form-group">
         <label>Email Address</label>
         <app-input [control]="registerForm.controls.email"></app-input>

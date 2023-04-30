@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "angular-auth-8fdc0": {
+      "hosting": {
+        "auth": [
+          "angular-auth-8fdc0"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "angular-auth-8fdc0"
+  }
+}
